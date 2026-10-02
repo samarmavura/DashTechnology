@@ -18,11 +18,11 @@ REQUIRED_COLUMNS = [
 ]
 
 # ==============================================================================
-# DATA LOADING (same pattern as the other pages)
+# DATA LOADING 
 # ==============================================================================
 @st.cache_data
 def load_default_data():
-    df = pd.read_excel('DataCoSupplyChainDataset.xlsx')
+    df = pd.read_csv('DataCoSupplyChainDataset.csv')
     return _clean_dataframe(df)
 
 
@@ -76,7 +76,7 @@ else:
     try:
         df = load_default_data()
     except FileNotFoundError:
-        st.error("Please ensure DataCoSupplyChainDataset.xlsx is in the same directory as this script, "
+        st.error("Please ensure DataCoSupplyChainDataset.csv is in the same directory as this script, "
                   "or upload a dataset using the sidebar.")
         st.stop()
 
@@ -117,12 +117,6 @@ st.markdown("""
 
 # ==============================================================================
 # DEMAND & RESTOCK PRIORITY ANALYTICS
-#
-# This dataset has no literal stock-on-hand field, so "inventory priority" is
-# built from three real signals instead: total sales volume, profit margin,
-# and recent demand trend. A product scores as high restock priority when
-# it sells a lot, makes good margin, AND demand is trending up. A product
-# with shrinking demand and thin margin surfaces as a clearance candidate.
 # ==============================================================================
 @st.cache_data
 def compute_inventory_summary(df):

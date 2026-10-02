@@ -24,7 +24,7 @@ REQUIRED_COLUMNS = [
 
 @st.cache_data
 def load_default_data():
-    df = pd.read_excel('DataCoSupplyChainDataset.xlsx')
+    df = pd.read_csv('DataCoSupplyChainDataset.csv')
     return _clean_dataframe(df)
 
 
@@ -147,7 +147,7 @@ else:
     try:
         df = load_default_data()
     except FileNotFoundError:
-        st.error("Please ensure DataCoSupplyChainDataset.xlsx is in the same directory as this script, "
+        st.error("Please ensure DataCoSupplyChainDataset.csv is in the same directory as this script, "
                   "or upload a dataset using the sidebar.")
         st.stop()
 
