@@ -376,10 +376,10 @@ with main_col:
     # TABS
     # ==========================================================================
     tab1, tab2, tab3, tab4, tab5 = st.tabs([
-        "🌐 Network Map",
-        "⭐ Eigenvector Centrality",
-        "🚧 Betweenness Centrality",
-        "📍 Closeness Centrality",
+        "Market Coverage",
+        "Most Influential",
+        "Biggest Bottlenecks",
+        "Most Connected",
         "📋 Full Data Table"
     ])
 
