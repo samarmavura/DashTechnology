@@ -26,6 +26,8 @@ WHEN A LIVE SYSTEM EXISTS LATER:
 
 from abc import ABC, abstractmethod
 import io
+from pathlib import Path
+
 import pandas as pd
 import networkx as nx
 import streamlit as st
@@ -223,7 +225,7 @@ def _load_csv_dataframe(file_bytes: bytes = None, filename: str = None) -> pd.Da
         else:
             df = pd.read_excel(buffer)
     else:
-        df = pd.read_csv('DataCoSupplyChainDataset.csv')
+        df = pd.read_csv('DataCoSupplyChainDataset.csv', encoding='latin1')
 
     for col in ['Category Name', 'Order Region', 'Shipping Mode']:
         if col in df.columns:
