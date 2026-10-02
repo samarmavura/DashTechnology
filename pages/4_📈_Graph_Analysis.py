@@ -24,7 +24,7 @@ REQUIRED_COLUMNS = [
 
 @st.cache_data
 def load_default_data():
-    df = pd.read_csv('DataCoSupplyChainDataset.csv')
+    df = pd.read_csv('DataCoSupplyChainDataset.csv', encoding='latin1')
     return _clean_dataframe(df)
 
 
