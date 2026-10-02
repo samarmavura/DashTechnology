@@ -91,7 +91,7 @@ class DataSource(ABC):
 
 class CSVDataSource(DataSource):
     """
-    Today's only real implementation. Reads the DataCo dataset from a
+    Reads the DataCo dataset from a
     local file (or an uploaded file, if provided), computes the same
     metrics home.py used to compute inline.
     """
@@ -213,8 +213,6 @@ def get_data_source(mode: str = None, file_bytes: bytes = None, filename: str = 
 
 
 # ==============================================================================
-# Internal helpers — the actual pandas/networkx logic, unchanged from before,
-# just relocated here so it's shared by every page instead of duplicated.
 # ==============================================================================
 @st.cache_data(ttl=CSV_CACHE_TTL_SECONDS)
 def _load_csv_dataframe(file_bytes: bytes = None, filename: str = None) -> pd.DataFrame:
@@ -225,7 +223,7 @@ def _load_csv_dataframe(file_bytes: bytes = None, filename: str = None) -> pd.Da
         else:
             df = pd.read_excel(buffer)
     else:
-        df = pd.read_excel('DataCoSupplyChainDataset.xlsx')
+        df = pd.read_csv('DataCoSupplyChainDataset.csv')
 
     for col in ['Category Name', 'Order Region', 'Shipping Mode']:
         if col in df.columns:
